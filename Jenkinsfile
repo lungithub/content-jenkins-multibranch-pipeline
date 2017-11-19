@@ -24,18 +24,18 @@ pipeline {
 
 stage('Promote Development to Master') {
   when {
-    branch 'devbranch1'
+    branch 'development'
   }
   steps {
     echo 'Stashing Local Changes'
     sh 'git stash'
     echo 'Checking Out Development'
-    sh 'git checkout devbranch1'
+    sh 'git checkout development'
     sh 'git pull origin'
     echo 'Checking Out Master'
     sh 'git checkout master'
     echo 'Merging Development into Master'
-    sh 'git merge devbranch1'
+    sh 'git merge development'
     echo 'Git Push to Origin'
     sh 'git push origin master'
   }
